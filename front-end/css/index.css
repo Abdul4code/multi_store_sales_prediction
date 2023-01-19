@@ -1,0 +1,135 @@
+.main-body{
+    background-image: linear-gradient(to right,rgb(248,224,237), rgb(209,241,255));
+    padding: 20px 40px;
+}
+
+.header-head{
+    font-size: 14pt;
+    text-transform: uppercase;
+    font-family: 'Sofia Sans', sans-serif;
+    word-spacing: 1px;
+    letter-spacing: 1.4px;
+    margin-bottom: 20px;
+}
+
+.initials{
+    font-size: 18pt;
+    font-weight: bolder;
+}
+
+.first-cols, .first-filter, .inner-filter, .emergencies{
+   background-color: rgb(255, 255, 255, 0.8);
+   font-family: 'Sofia Sans', sans-serif;
+   font-size: 10pt;
+   border-radius: 10px;
+   padding: 15px;
+}
+
+.total-section{
+    border-bottom: 1px solid rgb(209,241,255)
+}
+
+.inside-row{
+    padding: 20px;
+}
+
+.section-cont{
+    border-left: 7px solid blue;
+}
+
+.number{
+    font-weight: bolder;
+    color: brown;
+    font-size: 11pt;
+}
+    
+.summary-section{
+    margin: 20px 0px;
+    background-color: rgba(229,223,227,1);
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 20px solid black;
+}
+
+.each-div{
+    margin: 20px 20px;
+}
+
+.color-instore, .color-predicted{
+    width: 20px;
+    height: 20px;
+    background-color: blue;
+    display: inline-block;
+    border-radius: 50px;
+    margin-right: 10px;
+    margin-top: 0px;
+    position: relative;
+    top: -5px;
+}
+
+.color-predicted{
+    background-color: brown;
+}
+
+
+.predicted{
+    display: inline-block;
+}
+
+.normal{
+    background-color: green;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.event-button{
+    padding: 5px 10px;
+    font-size: 12pt;
+    cursor: pointer;
+    color: white;
+    text-align: center;
+    margin-top: 40px;
+    border: 1px solid white;
+}
+
+.buy{
+    background-color: brown;
+}
+
+.replenish{
+    background-color: green;
+}
+
+.buy:hover{
+    background-color: rgb(110, 31, 31);
+    color: black;
+}
+
+.replenish:hover{
+    background-color: rgb(9, 65, 9);
+    color: black;
+}
+
+.second-cols{
+    padding: 0px 20px;
+}
+
+.store_selection{
+    padding: 10px;
+    width: 100%;
+    margin-top: 30px;
+    font-size: 12pt;
+}
+
+.second-filter{
+    padding-left: 10px;
+}
+
+.emergencies{
+    margin-top: 20px;
+    position: relative;
+    height: 70vh;
+}

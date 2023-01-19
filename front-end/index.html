@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- CSS-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/index.css" />
+
+        <!-- Javascript -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src='js/charts.js'></script>
+
+        <!-- fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans&display=swap" rel="stylesheet">
+
+    </head>
+    <body>
+        <div class="container-fluid main-body">
+            <div class="header row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="header-head">
+                        <span class="initials">M</span><span>ultistore </span>
+                        <span class="initials">S</span><span>ales </span>
+                        <span class="initials">P</span><span>rediction </span>
+                        <span class="initials"> Dashboard </span>
+                    </div> 
+                </div>
+            </div>
+            <div class="row">
+                <div class="first-cols col-xs-12 col-sm-5 col-md-5 col-lg-5">
+                    <div class="row total-section">
+                        <div class="section-head col-xs-12 col-sm-12 col-md-12 col-lg-12"> WHAT ARE WE MANAGING? </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="row inside-row">
+                                <div class="section-cont col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                    <div class="number"> 10 </div>
+                                    <div class="tag"> STORES </div> 
+                                </div>
+        
+                                <div class="section-cont col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                    <div class="number"> 50 </div>
+                                    <div class="tag"> UNIQUE ITEMS </div> 
+                                </div>
+        
+                                <div class="section-cont col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                    <div class="number"> 15650 </div>
+                                    <div class="tag"> TOTAL ITEMS </div> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row summary-section">
+                        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 summary">
+                            <div class="each-div">
+                                <span class="color-instore"></span>
+                                <span class="predicted">
+                                    <div class="tag"> IN STORE </div>
+                                    <div class="number"> 950 </div>
+                                </span>
+                            </div>
+                            <div class="each-div">
+                                <span class="color-predicted"></span>
+                                <span class="predicted">
+                                    <div class="tag"> PREDICTED SALES </div>
+                                    <div class="number"> 220 </div>
+                                </span>
+                            </div>
+                            <div class="status">
+                                <div class="status-text normal"> NORMAL </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 charts">
+                            <canvas id="mycanvas" style="height: 200px; width:100%"></canvas>
+                        </div>
+                    </div>
+                    <div class="row summary-section">
+                        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 summary">
+                            <div class="each-div">
+                                <span class="color-instore"></span>
+                                <span class="predicted">
+                                    <div class="tag"> AVAILABLE </div>
+                                    <div class="number"> 9420 </div>
+                                </span>
+                            </div>
+                            <div class="each-div">
+                                <span class="color-predicted"></span>
+                                <span class="predicted">
+                                    <div class="tag"> SALES </div>
+                                    <div class="number"> 3340 </div>
+                                </span>
+                            </div>
+                            <div class="status row">
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 event-button buy"> BUY </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 event-button replenish"> REPLENISH </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 charts">
+                            <canvas id="event-chart" style="height: 200px; width:100%"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="second-cols col-xs-12 col-sm-7 col-md-7 col-lg-7">
+                    <div class="row">
+                        <div class="first-filter col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <div class="section-head col-xs-12 col-sm-12 col-md-12 col-lg-12"> WHICH STORE ARE YOU INTERESTED IN? </div>
+                            <select class="store_selection">
+                                <option value="1"> Lagos Store </option>
+                                <option value="2"> Ogun Store </option>
+                                <option value="3"> Osun Store </option>
+                                <option value="2"> Ekiti Store </option>
+                                <option value="2"> Ondo Store </option>
+                            </select>
+                        </div>
+                        <div class="second-filter col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <div class="inner-filter">
+                                <div class="section-head col-xs-12 col-sm-12 col-md-12 col-lg-12"> WHICH ITEM ARE YOU INTERESTED IN? </div>
+                                <select class="store_selection">
+                                    <option value="1"> Samsung Phone </option>
+                                    <option value="2"> Rechargeable fan </option>
+                                    <option value="3"> Power Bank </option>
+                                    <option value="2"> Earpod </option>
+                                    <option value="2"> Headset </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="emergencies col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="section-head col-xs-12 col-sm-12 col-md-12 col-lg-12"> WHAT NOTIFICATIONS DO WE CURRENTLY HAVE? </div>
+                            <div class="table-responsive">
+                                <table class="'table-stripped">
+                                    <thead>
+                                        <td>  </td>
+                                        <td> Status </td>
+                                        <td> Type </td>
+                                        <td> Description </td>
+                                        <td> Action </td>
+                                    </thead>
+                                    <tr>
+                                        <td> <span class="emergency-icon"></span> </td>
+                                        <td> Emmergency </td>
+                                        <td> Replenishment Required </td>
+                                        <td> 
+                                            There is a need replenish
+                                            <span class="note-no-item"> 20 </span>
+                                            <span class="note-item"> Clipper </span> 
+                                            in <span class="note-store"> Lagos </span> store.
+                                        </td>
+                                        <td> 
+                                            <span class="fa fa-mark">
+                                            <span class="fa fa-mark">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td> <span class="emergency-icon"></span> </td>
+                                        <td> Emmergency </td>
+                                        <td> Movement Required </td>
+                                        <td> 
+                                            <span class="note-no-item"> 20 </span> 
+                                            <span class="note-item"> Clippers </span>
+                                            should be moved  
+                                            in <span class="note-from-store"> Lagos </span> store.
+                                        </td>
+                                        <td> 
+                                            <span class="fa fa-mark">
+                                            <span class="fa fa-mark">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
