@@ -25,6 +25,10 @@
    padding: 15px;
 }
 
+.first-cols{
+    padding-bottom: 0px;
+}
+
 .total-section{
     border-bottom: 1px solid rgb(209,241,255)
 }
@@ -49,6 +53,29 @@
     padding: 15px;
     border-radius: 10px;
     border-left: 20px solid black;
+}
+
+.form-section{
+    margin: 20px 0px;
+    background-color: rgba(240,240,240,1);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.action-submit{
+    width: 50%;
+    float: right;
+    font-size: 10pt;
+    padding: 5px;
+    background-color: rgb(230, 230, 230);
+    border: 1px solid rgb(200, 200, 200);
+    color: brown;
+}
+
+.action-submit:hover{
+    background-color: rgb(210, 210, 210);
+    border: 1px solid brown;
+    color: brown;
 }
 
 .each-div{
@@ -126,10 +153,100 @@
 
 .second-filter{
     padding-left: 10px;
+    padding-right: 0px;
 }
 
 .emergencies{
     margin-top: 20px;
     position: relative;
     height: 70vh;
+}
+
+
+.sum-store, .sum-prod {
+    font-size: 14pt;
+    color: blue;
+}
+
+.timeframe{
+    font-size: 10pt;
+    text-align: right;
+}
+
+.action-form {
+    width: 80%;
+    margin: 0px auto;
+    display: none;
+}
+
+.shown{
+    display:block;
+}
+
+.each-input{
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
+}
+
+.half-input{
+    width: 49%;
+    display: inline-block;
+}
+
+.each-input input, .each-input select{
+    width: 100%;
+    padding: 5px;
+    font-size: 8pt;
+}
+
+.timeframe input, .timeframe select {
+    padding: 10px;
+}
+
+.toggle-section{
+    border-radius: 10px;
+    padding: 0px;
+}
+
+.button-act{
+    background-color: rgba(229,223,227,1);
+    padding: 10px 20px;
+    width: 100%;
+    margin: 5px 0px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: black;
+}
+
+.button-act:hover{
+    background-color: rgba(200,213,217,1);
+}
+
+.active-toggle{
+    background-color: rgb(86, 93, 95);
+    color: white;
+}
+
+.input-note{
+    color: red;
+    font-size: 9pt;
+    border: 0px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.body-conts{
+    margin: 0px;
+}
+
+.table-cont{
+    height: 60vh;
+    margin-top: 20px;
+    border-radius: 10px;
+    background-color: rgb(240, 240, 236);
+}
+
+thead{
+    background-color: black;
+    color: white;
 }

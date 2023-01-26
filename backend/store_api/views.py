@@ -2,10 +2,13 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.generics import ListAPIView, UpdateAPIView
-from calendar import monthrange
+from datetime import datetime
+
 
 from .serializer import StoreSerializer
 from .models import Store
+from utils.utilities import create_prediction_dataframe, preprocess
+from utils.utilities import predict as predict_sales
 
 # Create your views here.
 
@@ -21,7 +24,6 @@ def product_detail(request, store_id, product_id):
    
     return Response(
             serializer.data
-        
     )
 
 @api_view(['POST'])
@@ -43,7 +45,40 @@ def product_update(request):
 
 @api_view(['POST'])
 def predict(request):
-    #period = request.data['period']
-    days_in_month = num_days = monthrange(2019, 2)[1] # number of days in the month
+    start_date = datetime.strptime(request.data['start_date'], "%Y-%m-%d")
+    period = request.data['period']
+    store_id = request.data['store_id']
+    product_id = request.data['product_id']
 
-    print(days_in_month) 
+    df = create_prediction_dataframe(start_date, period, store_id, product_id)
+    stop_date = df.loc[df.index[-1], 'date']
+    df = preprocess(df)
+    pred, daily_average = predict_sales(df)
+
+    return Response(
+        {
+            "prediction": pred,
+            "period": period,
+            "daily_average": daily_average,
+            "start_date": start_date,
+            "end_date": stop_date
+        }
+    )
+
+@api_view(['GET'])
+def product_filter(requets, store_id, product_id):
+    if(store_id == 0 and product_id == 0):
+        print("hurray")
+        queryset = Store.objects.all()
+    elif store_id == 0:
+        queryset = Store.objects.filter(product_id = product_id)
+    elif product_id == 0:
+        queryset = Store.objects.filter(store_id = store_id)
+    else:
+        queryset = Store.objects.filter(product_id = product_id).filter(store_id = store_id)
+
+    serializer = StoreSerializer(queryset, many=True)
+
+    return Response(
+        serializer.data
+    )

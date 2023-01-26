@@ -10,6 +10,8 @@
         <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src='js/charts.js'></script>
+        <script src='js/dashboard.js'></script>
+        <script src='js/actions.js'></script>
 
         <!-- fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,7 +22,7 @@
     <body>
         <div class="container-fluid main-body">
             <div class="header row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
                     <div class="header-head">
                         <span class="initials">M</span><span>ultistore </span>
                         <span class="initials">S</span><span>ales </span>
@@ -28,25 +30,35 @@
                         <span class="initials"> Dashboard </span>
                     </div> 
                 </div>
+                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                    <div class="timeframe">
+                        <input type="date" value="" class="pred-date">
+                        <select class="period">
+                            <option value="daily"> Daily </option>
+                            <option value="weekly"> weekly </option>
+                            <option value="monthly"> Monthly </option>
+                        </select>
+                    </div> 
+                </div>
             </div>
             <div class="row">
-                <div class="first-cols col-xs-12 col-sm-5 col-md-5 col-lg-5">
+                <div class="first-cols col-xs-12 col-sm-5 col-md-5 col-lg-5 body-conts">
                     <div class="row total-section">
                         <div class="section-head col-xs-12 col-sm-12 col-md-12 col-lg-12"> WHAT ARE WE MANAGING? </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="row inside-row">
                                 <div class="section-cont col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                    <div class="number"> 10 </div>
+                                    <div class="number" id="unique_stores"> 10 </div>
                                     <div class="tag"> STORES </div> 
                                 </div>
         
                                 <div class="section-cont col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                    <div class="number"> 50 </div>
+                                    <div class="number" id="unique_products"> 50 </div>
                                     <div class="tag"> UNIQUE ITEMS </div> 
                                 </div>
         
                                 <div class="section-cont col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                    <div class="number"> 15650 </div>
+                                    <div class="number" id="total_items"> 15650 </div>
                                     <div class="tag"> TOTAL ITEMS </div> 
                                 </div>
                             </div>
@@ -54,6 +66,7 @@
                     </div>
                     <div class="row summary-section">
                         <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 summary">
+                            <div class="section-head col-xs-12 col-sm-12 col-md-12 col-lg-12"> <span class="sum-store"> Lagos Store </span> - <span class="sum-prod"> Earpod</span> </div>
                             <div class="each-div">
                                 <span class="color-instore"></span>
                                 <span class="predicted">
@@ -76,29 +89,63 @@
                             <canvas id="mycanvas" style="height: 200px; width:100%"></canvas>
                         </div>
                     </div>
-                    <div class="row summary-section">
-                        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 summary">
-                            <div class="each-div">
-                                <span class="color-instore"></span>
-                                <span class="predicted">
-                                    <div class="tag"> AVAILABLE </div>
-                                    <div class="number"> 9420 </div>
-                                </span>
-                            </div>
-                            <div class="each-div">
-                                <span class="color-predicted"></span>
-                                <span class="predicted">
-                                    <div class="tag"> SALES </div>
-                                    <div class="number"> 3340 </div>
-                                </span>
-                            </div>
-                            <div class="status row">
-                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 event-button buy"> BUY </div>
-                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 event-button replenish"> REPLENISH </div>
-                            </div>
+                    <div class="row form-section">
+                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 toggle-section">
+                            <div class="button-act active-toggle" id="move-toggle"> Move </div>
+                            <div class="button-act" id="buy-toggle"> Buy </div>
+                            <div class="button-act" id="replenish-toggle"> Replenish </div>
                         </div>
-                        <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 charts">
-                            <canvas id="event-chart" style="height: 200px; width:100%"></canvas>
+                        <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+                            <form action="" class="action-form move-form shown">
+                                <div class="each-input half-input">
+                                    <div class="label"> From </div>
+                                    <select class="stores_list move-list-from"></select>
+                                </div>
+                                <div class="each-input half-input">
+                                    <div class="label"> To </div>
+                                    <select class="stores_list move-list-to"></select>
+                                </div>
+                                <div class="each-input">
+                                    <div class="label"> Product </div>
+                                    <select class="product_list move-product-list"></select>
+                                </div>
+                                <div class="each-input">
+                                    <div class="label"> Quantity </div>
+                                    <input type="number" min="1" step="1" class="move-quantity"/>
+                                </div>
+                                <input type="submit" value="Move" class="action-submit" id="action-move"/>
+                            </form>
+
+                            <form action="" class="action-form buy-form">
+                                <div class="each-input">
+                                    <div class="label"> From </div>
+                                    <select class="stores_list"></select>
+                                </div>
+                                <div class="each-input">
+                                    <div class="label"> Product </div>
+                                    <select class="product_list"></select>
+                                </div>
+                                <div class="each-input">
+                                    <div class="label"> Quantity </div>
+                                    <input type="number" min="1" step="1" />
+                                </div>
+                                <input type="submit" value="Buy" class="action-submit" id="action-move"/>
+                            </form>
+
+                            <form action="" class="action-form replenish-form">
+                                <div class="each-input">
+                                    <div class="input-note"> Only the central store is replenishable.</div>
+                                </div>
+                                <div class="each-input">
+                                    <div class="label"> Product </div>
+                                    <select class="product_list"></select>
+                                </div>
+                                <div class="each-input">
+                                    <div class="label"> Quantity </div>
+                                    <input type="number" min="1" step="1" />
+                                </div>
+                                <input type="submit" value="Replenish" class="action-submit" id="action-move"/>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -106,23 +153,15 @@
                     <div class="row">
                         <div class="first-filter col-xs-6 col-sm-6 col-md-6 col-lg-6">
                             <div class="section-head col-xs-12 col-sm-12 col-md-12 col-lg-12"> WHICH STORE ARE YOU INTERESTED IN? </div>
-                            <select class="store_selection">
-                                <option value="1"> Lagos Store </option>
-                                <option value="2"> Ogun Store </option>
-                                <option value="3"> Osun Store </option>
-                                <option value="2"> Ekiti Store </option>
-                                <option value="2"> Ondo Store </option>
+                            <select class="store_selection stores_list">
+                                
                             </select>
                         </div>
                         <div class="second-filter col-xs-6 col-sm-6 col-md-6 col-lg-6">
                             <div class="inner-filter">
                                 <div class="section-head col-xs-12 col-sm-12 col-md-12 col-lg-12"> WHICH ITEM ARE YOU INTERESTED IN? </div>
-                                <select class="store_selection">
-                                    <option value="1"> Samsung Phone </option>
-                                    <option value="2"> Rechargeable fan </option>
-                                    <option value="3"> Power Bank </option>
-                                    <option value="2"> Earpod </option>
-                                    <option value="2"> Headset </option>
+                                <select class="store_selection product_list">
+                                   
                                 </select>
                             </div>
                         </div>
@@ -130,44 +169,31 @@
                     <div class="row">
                         <div class="emergencies col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="section-head col-xs-12 col-sm-12 col-md-12 col-lg-12"> WHAT NOTIFICATIONS DO WE CURRENTLY HAVE? </div>
-                            <div class="table-responsive">
-                                <table class="'table-stripped">
-                                    <thead>
-                                        <td>  </td>
-                                        <td> Status </td>
+                            <div class="table-responsive table-cont">
+                                <table class="table table-striped">
+                                    <thead class="thead-dark">
                                         <td> Type </td>
+                                        <td> Move from </td>
+                                        <td> Move to </td>
+                                        <td> Item Involved </td>
+                                        <td> Quantity </td>
                                         <td> Description </td>
-                                        <td> Action </td>
                                     </thead>
                                     <tr>
-                                        <td> <span class="emergency-icon"></span> </td>
-                                        <td> Emmergency </td>
-                                        <td> Replenishment Required </td>
-                                        <td> 
-                                            There is a need replenish
-                                            <span class="note-no-item"> 20 </span>
-                                            <span class="note-item"> Clipper </span> 
-                                            in <span class="note-store"> Lagos </span> store.
-                                        </td>
-                                        <td> 
-                                            <span class="fa fa-mark">
-                                            <span class="fa fa-mark">
-                                        </td>
+                                        <td> Move </td>
+                                        <td> Lagos Store </td>
+                                        <td> Ogun Store </td>
+                                        <td> Clipper </td>
+                                        <td> 40 </td>
+                                        <td> Move 40 clippers from Lagos store to Ogun store </td>
                                     </tr>
                                     <tr>
-                                        <td> <span class="emergency-icon"></span> </td>
-                                        <td> Emmergency </td>
-                                        <td> Movement Required </td>
-                                        <td> 
-                                            <span class="note-no-item"> 20 </span> 
-                                            <span class="note-item"> Clippers </span>
-                                            should be moved  
-                                            in <span class="note-from-store"> Lagos </span> store.
-                                        </td>
-                                        <td> 
-                                            <span class="fa fa-mark">
-                                            <span class="fa fa-mark">
-                                        </td>
+                                        <td> Replenish </td>
+                                        <td>  </td>
+                                        <td> Central Store </td>
+                                        <td> Clipper </td>
+                                        <td> 60 </td>
+                                        <td> Place Replenishment order for 600 clippers </td>
                                     </tr>
                                 </table>
                             </div>
