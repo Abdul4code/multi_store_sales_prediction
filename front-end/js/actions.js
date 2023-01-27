@@ -7,13 +7,8 @@ function update_store(store_id, product_id, qty, product){
     }
 
     $.post(`http://127.0.0.1:8000/api/update`, data, function(result){
-            console.log(result)
-            if(result[0].total_available < qty){
-                alert("You do not have enough product in that store. Try moving from central store or any other store")
-            }else{
-
-            }
-        })
+        console.log(result)
+    })
 }
 
 
@@ -46,7 +41,7 @@ $(document).ready(function(){
             if(result[0].total_available < qty){
                 alert("You do not have enough product in that store. Try moving from central store or any other store")
             }else{
-
+                update_store(store_from, product_id, qty, result[0])
             }
         })
 

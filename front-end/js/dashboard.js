@@ -2,8 +2,12 @@
 function fill_products_dropdown(unique_products){
     $('.product_list').empty()
     $('.product_list').append(`<option value='${0}'> All </>`)
+
+    $('.action_product_list').empty()
+    $('.action_product_list').append(`<option value='${0}'> All </>`)
     unique_products.forEach(element => {
         $('.product_list').append(`<option value='${unique_products.indexOf(element) + 1}'> ${element} </>`)
+        $('.action_product_list').append(`<option value='${unique_products.indexOf(element) + 1}'> ${element} </>`)
     });
 }
 
@@ -11,8 +15,13 @@ function fill_products_dropdown(unique_products){
 function fill_stores_dropdown(unique_stores){
     $('.stores_list').empty()
     $('.stores_list').append(`<option value='${0}'> All </>`)
+
+    $('.action_stores_list').empty()
+    $('.action_stores_list').append(`<option value='${0}'> All </>`)
+    
     unique_stores.forEach(element => {
         $('.stores_list').append(`<option value='${unique_stores.indexOf(element) + 1}'> ${element} </>`)
+        $('.action_stores_list').append(`<option value='${unique_stores.indexOf(element) + 1}'> ${element} </>`)
     });
 }
 
